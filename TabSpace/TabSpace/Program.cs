@@ -8,10 +8,10 @@ namespace TabSpace
         static void Main(string[] args)
         {
             var pathToFile = @"C:\temp\";
-            var inputFilePath = "tabtestz.txt";
-            var outputFilePath = "tabtest_tospaces.txt";
+            var inputFileName = "tabtest.txt";
+            var outputFileName = "tabtest_tospaces.txt";
 
-            var data = new FileData(pathToFile, outputFilePath, inputFilePath);
+            var data = new FileData(pathToFile, outputFileName, inputFileName);
 
             var tabProcessor = new TabSpaceProcessor(data);
             tabProcessor.ProcessText();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TabSpace.Data;
 using static System.Console;
@@ -19,27 +20,16 @@ namespace TabSpace
         {
             try
             {
+                var lstOutput = new List<string>();
                 var text = _textData.ReadTextData();
-
                 var arrTxt = text.ToNewlineArray();
-                var arrOut = new string[arrTxt.Length];
-                var counter = 0;
-
+                                
                 var tabStop = 4;
-                foreach (var line in arrTxt)
-                {
-
-                    var lstTxt = line.ToSpaces(tabStop);
-                    arrOut[counter] = lstTxt;
-
-                    counter += 1;
-                }
-
-                _textData.WriteTextData(arrOut);
+                lstOutput.AddRange(arrTxt.Select(line => line.ToSpaces(tabStop)));
+                _textData.WriteTextData(lstOutput);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-
                 WriteLine(ex.Message);
                 _ = ReadLine();
             }            
